@@ -1,0 +1,178 @@
+:root {
+--bg-light: #f1f3f6;
+--bg-dark: #121212;
+--container-light: #fff;
+--container-dark: #1e1e1e;
+--text-light: #000;
+--text-dark: #fff;
+--task-light: #f9f9f9;
+--task-dark: #2c2c2c;
+}
+
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background: var(--bg-light);
+color: var(--text-light);
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+padding: 1rem;
+transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+background: var(--bg-dark);
+color: var(--text-dark);
+}
+
+.container {
+background: var(--container-light);
+padding: 2rem;
+border-radius: 20px;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+width: 100%;
+max-width: 500px;
+transition: background 0.3s;
+}
+
+body.dark .container {
+background: var(--container-dark);
+}
+
+h1 {
+text-align: center;
+margin-bottom: 1rem;
+}
+
+.theme-toggle {
+position: absolute;
+top: 1rem;
+right: 1rem;
+background: transparent;
+border: 1px solid currentColor;
+padding: 0.3rem 0.6rem;
+border-radius: 8px;
+cursor: pointer;
+}
+
+.input-container {
+display: flex;
+gap: 0.5rem;
+margin-bottom: 1rem;
+flex-wrap: wrap;
+}
+
+input[type="text"] {
+flex-grow: 1;
+padding: 0.5rem 1rem;
+border: 1px solid #ccc;
+border-radius: 10px;
+font-size: 1rem;
+min-width: 0;
+flex: 1 1 200px;
+}
+
+.input-container button {
+flex-shrink: 0;
+padding: 0.5rem 1rem;
+border: none;
+background-color: #007bff;
+color: white;
+border-radius: 10px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+button:hover {
+background-color: #0056b3;
+}
+
+ul {
+list-style: none;
+padding: 0;
+}
+
+li {
+background: var(--task-light);
+margin-bottom: 0.5rem;
+padding: 0.75rem 1rem;
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+animation: fadeIn 0.6s ease-in;
+flex-wrap: wrap;
+transition: background 0.6s;
+}
+
+body.dark li {
+background: var(--task-dark);
+}
+
+li.completed span {
+text-decoration: line-through;
+color: #aaa;
+transition: color 0.3s, text-decoration 0.3s;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem; /* Увеличено расстояние между иконками */
+    margin-top: 0.5rem;
+}
+
+.controls button {
+background: none;
+border: none;
+cursor: pointer;
+padding: 0;
+}
+
+.controls img {
+width: 16px;
+height: 16px;
+}
+
+.fade-out {
+animation: fadeOut 0.6s forwards;
+}
+
+.edited {
+animation: highlight 0.6s;
+}
+
+@keyframes fadeIn {
+from {opacity: 0; transform: translateY(-10px);}
+to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeOut {
+from {opacity: 1; transform: translateX(0);}
+to {opacity: 0; transform: translateX(20px); height: 0; margin: 0; padding: 0;}
+}
+
+@keyframes highlight {
+0% { background-color: #fff3cd; }
+100% { background-color: transparent; }
+}
+
+@media (max-width: 400px) {
+h1 {
+    font-size: 1.5rem;
+}
+
+input[type="text"] {
+    font-size: 0.9rem;
+}
+
+.input-container button {
+    font-size: 0.9rem;
+}
+
+.controls img {
+    width: 14px;
+    height: 14px;
+    }
+}
